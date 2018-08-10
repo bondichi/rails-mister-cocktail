@@ -1,4 +1,43 @@
-<h1>Pick a Cocktail</h1>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1529502669403-c073b74fcefb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a09a2b726fa38b28491db50d919d7938&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb');">
+  <div class="banner-content">
+    <h1>Cocktails</h1>
+    <p>So good they should be prohibited</p>
+    <a class="btn btn-primary btn-lg">Add a Cocktail</a>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+    <% @cocktails.each do |cocktail| %>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+
+        <%= link_to(cocktail) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+                <h2><%= cocktail.name %></h2>
+                <% cocktail.doses.each do |dose| %>
+                <p><%= dose.description %></p>
+              <% end %>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+<!--           <a class="card-link" href="#" ></a> -->
+          </div>
+        <% end %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+
+
 
   <% @cocktails.each do |cocktail| %>
     <%= link_to(cocktail) do %>
@@ -11,3 +50,4 @@
     <% end  %>
   <% end %>
 
+  <%= link_to("Add Cocktail", new_cocktail_path) %>
